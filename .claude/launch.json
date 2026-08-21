@@ -1,0 +1,15 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "cafebot-static",
+      "runtimeExecutable": "powershell.exe",
+      "runtimeArgs": [
+        "-NoProfile",
+        "-ExecutionPolicy", "Bypass",
+        "-File", "C:\\Users\\umair\\AppData\\Local\\Temp\\claude\\C--Users-umair-CAFEBOT\\4070a20a-07cb-41f2-b16d-399e778e4fac\\scratchpad\\static-server.ps1"
+      ],
+      "port": 8123
+    }
+  ]
+}

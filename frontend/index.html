@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CafeBot &mdash; Your Neighborhood Café</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="logo">CafeBot</a>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="#about">About</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#hours-location">Hours &amp; Location</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <section class="hero">
+      <div class="container hero-inner">
+        <h1>Great Coffee, Warm Welcome</h1>
+        <p class="hero-subtitle">Freshly roasted beans, handmade pastries, and a cozy spot to call your own.</p>
+        <a href="#menu" class="btn btn-primary">View Menu</a>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="container">
+        <h2>About Us</h2>
+        <p>
+          CafeBot started as a small neighborhood coffee counter and grew into a place
+          where regulars and newcomers alike come to slow down. We roast in small batches,
+          bake fresh every morning, and source ingredients from local farms whenever we can.
+        </p>
+      </div>
+    </section>
+
+    <section id="menu" class="menu">
+      <div class="container">
+        <h2>Our Menu</h2>
+        <div class="menu-grid">
+
+          <article class="menu-card">
+            <h3 class="menu-card-name">Espresso</h3>
+            <p class="menu-card-price">$3.00</p>
+            <p class="menu-card-description">Rich, bold shot pulled from our house-roasted beans.</p>
+          </article>
+
+          <article class="menu-card">
+            <h3 class="menu-card-name">Cappuccino</h3>
+            <p class="menu-card-price">$4.50</p>
+            <p class="menu-card-description">Espresso topped with steamed milk and a thick layer of foam.</p>
+          </article>
+
+          <article class="menu-card">
+            <h3 class="menu-card-name">Latte</h3>
+            <p class="menu-card-price">$4.75</p>
+            <p class="menu-card-description">Smooth espresso with steamed milk and a touch of latte art.</p>
+          </article>
+
+          <article class="menu-card">
+            <h3 class="menu-card-name">Cold Brew</h3>
+            <p class="menu-card-price">$4.25</p>
+            <p class="menu-card-description">Slow-steeped for 18 hours, smooth and naturally sweet.</p>
+          </article>
+
+          <article class="menu-card">
+            <h3 class="menu-card-name">Croissant</h3>
+            <p class="menu-card-price">$3.50</p>
+            <p class="menu-card-description">Buttery, flaky, and baked fresh every morning.</p>
+          </article>
+
+          <article class="menu-card">
+            <h3 class="menu-card-name">Avocado Toast</h3>
+            <p class="menu-card-price">$7.00</p>
+            <p class="menu-card-description">Sourdough, smashed avocado, chili flakes, and a squeeze of lemon.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="hours-location" class="hours-location">
+      <div class="container hours-location-inner">
+        <div class="hours">
+          <h2>Hours</h2>
+          <ul class="hours-list">
+            <li><span>Monday &ndash; Friday</span><span>7:00 AM &ndash; 6:00 PM</span></li>
+            <li><span>Saturday</span><span>8:00 AM &ndash; 6:00 PM</span></li>
+            <li><span>Sunday</span><span>8:00 AM &ndash; 4:00 PM</span></li>
+          </ul>
+        </div>
+        <div class="location">
+          <h2>Location</h2>
+          <address>
+            123 Main Street<br>
+            Springfield, ST 12345
+          </address>
+          <p><a href="tel:+15551234567">(555) 123-4567</a></p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; 2026 CafeBot. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div class="chat-widget">
+    <div class="chat-window" id="chatWindow" hidden>
+      <div class="chat-header">
+        <span>CafeBot</span>
+        <button type="button" class="chat-close" id="chatClose" aria-label="Close chat">&times;</button>
+      </div>
+      <div class="chat-messages" id="chatMessages"></div>
+      <form class="chat-input-row" id="chatForm">
+        <input type="text" class="chat-input" id="chatInput" placeholder="Type a message&hellip;" autocomplete="off" aria-label="Message">
+        <button type="submit" class="chat-send" id="chatSend">Send</button>
+      </form>
+    </div>
+    <button type="button" class="chat-toggle" id="chatToggle" aria-label="Open chat">&#128172;</button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
