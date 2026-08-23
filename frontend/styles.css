@@ -123,9 +123,13 @@ a:hover {
 
 .hero {
   background:
-    radial-gradient(ellipse 60% 50% at 50% 0%, rgba(255, 46, 196, 0.18) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 40% at 80% 100%, rgba(0, 255, 242, 0.12) 0%, transparent 70%),
-    var(--color-bg);
+    radial-gradient(ellipse 60% 50% at 50% 0%, rgba(255, 46, 196, 0.28) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 80% 100%, rgba(0, 255, 242, 0.2) 0%, transparent 70%),
+    linear-gradient(180deg, rgba(8, 8, 15, 0.88) 0%, rgba(8, 8, 15, 0.94) 60%, var(--color-bg) 100%),
+    url("images/hero-cafe.jpg");
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: normal, normal, normal, luminosity;
   text-align: center;
   padding: 6.5rem 0;
 }
@@ -173,8 +177,15 @@ a:hover {
 /* About */
 
 .about {
-  padding: 4.5rem 0;
+  position: relative;
+  padding: 6rem 0;
   text-align: center;
+  background:
+    linear-gradient(180deg, var(--color-bg) 0%, rgba(8, 8, 15, 0.82) 15%, rgba(8, 8, 15, 0.82) 85%, var(--color-bg) 100%),
+    url("images/cafe-storefront.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .about h2 {
@@ -188,7 +199,8 @@ a:hover {
   margin: 0 auto;
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--color-muted);
+  color: var(--color-text);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 /* Menu */
@@ -302,6 +314,18 @@ address {
   margin: 0;
   font-size: 0.9rem;
   font-weight: 600;
+}
+
+.footer-inner p.photo-credit {
+  margin-top: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #6b6884;
+}
+
+.photo-credit a {
+  color: #6b6884;
+  text-decoration: underline;
 }
 
 /* Chat Widget */
