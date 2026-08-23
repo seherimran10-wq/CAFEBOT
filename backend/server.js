@@ -484,6 +484,61 @@ function checkPromotionEligibility(order, promotion) {
   return { eligible: true };
 }
 
+function formatTimeOfDay(hhmm) {
+  const [hours, minutes] = hhmm.split(':').map(Number);
+  const period = hours >= 12 ? 'PM' : 'AM';
+  const hour12 = hours % 12 === 0 ? 12 : hours % 12;
+  return minutes === 0 ? `${hour12} ${period}` : `${hour12}:${String(minutes).padStart(2, '0')} ${period}`;
+}
+
+const WEEKDAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+
+function describePromotionSchedule(promotion) {
+  const rules = promotion.eligibility || {};
+  const parts = [];
+
+  if (rules.days) {
+    const isWeekdays = rules.days.length === WEEKDAYS.length && WEEKDAYS.every((day) => rules.days.includes(day));
+    parts.push(isWeekdays ? 'Weekdays' : rules.days.join(', '));
+  }
+  if (rules.timeWindow) {
+    parts.push(`${formatTimeOfDay(rules.timeWindow.start)}–${formatTimeOfDay(rules.timeWindow.end)}`);
+  }
+
+  return parts.length ? parts.join(', ') : null;
+}
+
+// Whether a promotion is currently live for a browsing customer — based only
+// on its schedule (day/time), not on what's in any particular cart.
+function getPromotionStatus(promotion) {
+  const schedule = describePromotionSchedule(promotion);
+
+  if (!promotion.active) {
+    return { status: 'inactive', schedule };
+  }
+
+  const rules = promotion.eligibility || {};
+  let withinSchedule = true;
+
+  if (rules.days) {
+    const today = new Date().toLocaleDateString('en-US', { weekday: 'long' });
+    if (!rules.days.includes(today)) withinSchedule = false;
+  }
+  if (rules.timeWindow) {
+    const now = new Date();
+    const currentMinutes = now.getHours() * 60 + now.getMinutes();
+    const toMinutes = (value) => {
+      const [hours, minutes] = value.split(':').map(Number);
+      return hours * 60 + minutes;
+    };
+    if (currentMinutes < toMinutes(rules.timeWindow.start) || currentMinutes >= toMinutes(rules.timeWindow.end)) {
+      withinSchedule = false;
+    }
+  }
+
+  return { status: withinSchedule ? 'active' : 'upcoming', schedule };
+}
+
 function computePromotionDiscount(order, promotion) {
   const menu = loadMenu();
   const categories = (promotion.eligibility || {}).categories || [];
@@ -756,6 +811,20 @@ app.post('/api/chat', async (req, res) => {
       conversationHistory: history,
     });
   }
+});
+
+app.get('/api/promotions', (req, res) => {
+  const promotions = loadPromotions().map((promotion) => {
+    const { status, schedule } = getPromotionStatus(promotion);
+    return {
+      id: promotion.id,
+      name: promotion.name,
+      rule: promotion.rule,
+      status,
+      schedule,
+    };
+  });
+  res.json(promotions);
 });
 
 app.get('/api/staff/orders', (req, res) => {

@@ -119,6 +119,11 @@ a:hover {
   text-decoration: none;
 }
 
+.nav-list a[aria-current="page"] {
+  color: var(--color-primary);
+  text-shadow: var(--glow-primary);
+}
+
 /* Hero */
 
 .hero {
@@ -172,6 +177,51 @@ a:hover {
   box-shadow: var(--glow-accent);
   text-decoration: none;
   transform: translateY(-2px);
+}
+
+/* Quick links (home page) */
+
+.quick-links {
+  padding: 4rem 0;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.quick-links-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.quick-link-card {
+  display: block;
+  padding: 1.75rem 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface-raised);
+  text-align: center;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.quick-link-card:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--glow-primary);
+  transform: translateY(-3px);
+  text-decoration: none;
+}
+
+.quick-link-card h3 {
+  margin-bottom: 0.4em;
+  font-size: 1.15rem;
+  color: #fff;
+}
+
+.quick-link-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-muted);
 }
 
 /* About */
@@ -256,6 +306,99 @@ a:hover {
 .menu-card-description {
   color: var(--color-muted);
   font-weight: 500;
+  margin-bottom: 0.75em;
+}
+
+.menu-card-options,
+.menu-card-allergens {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-muted);
+  margin: 0 0 0.3em;
+}
+
+.menu-card-allergens {
+  color: var(--color-accent);
+}
+
+/* Offers */
+
+.offers {
+  padding: 4.5rem 0;
+}
+
+.offers-subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-muted);
+  margin: 0 auto 2.5rem;
+  max-width: 36rem;
+}
+
+.offers-loading {
+  text-align: center;
+  color: var(--color-muted);
+}
+
+.offers-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.offer-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  background: var(--color-surface-raised);
+}
+
+.offer-status {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 0.75em;
+}
+
+.offer-status--active {
+  background: rgba(57, 255, 20, 0.12);
+  color: var(--color-accent-2);
+  box-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+}
+
+.offer-status--upcoming {
+  background: rgba(255, 200, 0, 0.12);
+  color: #ffc800;
+  box-shadow: 0 0 10px rgba(255, 200, 0, 0.4);
+}
+
+.offer-status--inactive {
+  background: rgba(169, 166, 201, 0.1);
+  color: var(--color-muted);
+}
+
+.offer-name {
+  font-size: 1.2rem;
+  color: #fff;
+  margin-bottom: 0.4em;
+}
+
+.offer-rule {
+  color: var(--color-muted);
+  font-weight: 500;
+  margin-bottom: 0.5em;
+}
+
+.offer-schedule {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-accent);
   margin-bottom: 0;
 }
 
@@ -534,6 +677,10 @@ address {
   .hours-location-inner {
     grid-template-columns: 1fr;
   }
+
+  .quick-links-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 480px) {
@@ -542,6 +689,10 @@ address {
   }
 
   .menu-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-links-grid {
     grid-template-columns: 1fr;
   }
 
