@@ -561,6 +561,10 @@ function getOrderTotal(order) {
   };
 }
 
+// Orders are persisted to a local JSON file. This is for development/demo
+// purposes only — Vercel's serverless functions run on ephemeral, read-only
+// filesystems and do not guarantee that writes here survive between
+// invocations or deploys. Replace with a real database before production.
 function loadOrders() {
   return JSON.parse(fs.readFileSync(ORDERS_PATH, 'utf8'));
 }
