@@ -1,0 +1,112 @@
+/* CafeBot staff dashboard styles */
+
+:root {
+  --color-bg: #faf6f1;
+  --color-surface: #ffffff;
+  --color-text: #2b211b;
+  --color-muted: #6b5d54;
+  --color-primary: #6f4e37;
+  --color-primary-dark: #563c2a;
+  --color-border: #e6ddd3;
+  --radius: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 1.5rem;
+  font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+.staff-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.staff-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+#refreshBtn {
+  border: none;
+  background: var(--color-primary);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#refreshBtn:hover {
+  background: var(--color-primary-dark);
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.orders-table th,
+.orders-table td {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.9rem;
+  vertical-align: top;
+}
+
+.orders-table th {
+  background: var(--color-bg);
+  color: var(--color-muted);
+  font-weight: 600;
+}
+
+.orders-table tr:last-child td {
+  border-bottom: none;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.status-new { background: #fde68a; }
+.status-preparing { background: #bfdbfe; }
+.status-ready { background: #bbf7d0; }
+.status-completed { background: #e5e7eb; color: var(--color-muted); }
+
+.advance-btn {
+  border: none;
+  background: var(--color-primary);
+  color: #fff;
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.advance-btn:hover {
+  background: var(--color-primary-dark);
+}
+
+#emptyMessage {
+  color: var(--color-muted);
+  margin-top: 1.5rem;
+}

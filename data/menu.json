@@ -1,0 +1,180 @@
+{
+  "items": [
+    {
+      "id": "espresso",
+      "name": "Espresso",
+      "category": "coffee",
+      "description": "Rich, bold shot pulled from our house-roasted beans.",
+      "price": 3.00,
+      "options": {
+        "sizes": ["single", "double"]
+      },
+      "allergens": [],
+      "available": true
+    },
+    {
+      "id": "cappuccino",
+      "name": "Cappuccino",
+      "category": "coffee",
+      "description": "Espresso topped with steamed milk and a thick layer of foam.",
+      "price": 4.50,
+      "options": {
+        "sizes": ["small", "medium", "large"],
+        "milk": ["whole", "oat", "almond", "skim"]
+      },
+      "allergens": ["dairy"],
+      "available": true
+    },
+    {
+      "id": "latte",
+      "name": "Latte",
+      "category": "coffee",
+      "description": "Smooth espresso with steamed milk and a touch of latte art.",
+      "price": 4.75,
+      "options": {
+        "sizes": ["small", "medium", "large"],
+        "milk": ["whole", "oat", "almond", "skim"],
+        "flavors": ["vanilla", "caramel", "hazelnut"]
+      },
+      "allergens": ["dairy"],
+      "available": true
+    },
+    {
+      "id": "cold-brew",
+      "name": "Cold Brew",
+      "category": "coffee",
+      "description": "Slow-steeped for 18 hours, smooth and naturally sweet.",
+      "price": 4.25,
+      "options": {
+        "sizes": ["medium", "large"]
+      },
+      "allergens": [],
+      "available": true
+    },
+    {
+      "id": "americano",
+      "name": "Americano",
+      "category": "coffee",
+      "description": "Espresso diluted with hot water for a clean, bold cup.",
+      "price": 3.50,
+      "options": {
+        "sizes": ["small", "medium", "large"]
+      },
+      "allergens": [],
+      "available": true
+    },
+    {
+      "id": "mocha",
+      "name": "Mocha",
+      "category": "coffee",
+      "description": "Espresso with steamed milk and rich chocolate syrup, topped with whipped cream.",
+      "price": 5.00,
+      "options": {
+        "sizes": ["small", "medium", "large"],
+        "milk": ["whole", "oat", "almond", "skim"]
+      },
+      "allergens": ["dairy"],
+      "available": true
+    },
+    {
+      "id": "chai-latte",
+      "name": "Chai Latte",
+      "category": "tea",
+      "description": "Spiced black tea concentrate with steamed milk.",
+      "price": 4.50,
+      "options": {
+        "sizes": ["small", "medium", "large"],
+        "milk": ["whole", "oat", "almond", "skim"]
+      },
+      "allergens": ["dairy"],
+      "available": true
+    },
+    {
+      "id": "green-tea",
+      "name": "Green Tea",
+      "category": "tea",
+      "description": "Steeped loose-leaf green tea, light and grassy.",
+      "price": 3.25,
+      "options": {
+        "sizes": ["small", "medium", "large"]
+      },
+      "allergens": [],
+      "available": true
+    },
+    {
+      "id": "hot-chocolate",
+      "name": "Hot Chocolate",
+      "category": "other",
+      "description": "Steamed milk with rich cocoa, topped with whipped cream.",
+      "price": 4.00,
+      "options": {
+        "sizes": ["small", "medium", "large"],
+        "milk": ["whole", "oat", "almond", "skim"]
+      },
+      "allergens": ["dairy"],
+      "available": true
+    },
+    {
+      "id": "croissant",
+      "name": "Croissant",
+      "category": "pastry",
+      "description": "Buttery, flaky, and baked fresh every morning.",
+      "price": 3.50,
+      "options": {},
+      "allergens": ["gluten", "dairy", "eggs"],
+      "available": true
+    },
+    {
+      "id": "blueberry-muffin",
+      "name": "Blueberry Muffin",
+      "category": "pastry",
+      "description": "Moist muffin loaded with fresh blueberries.",
+      "price": 3.75,
+      "options": {},
+      "allergens": ["gluten", "dairy", "eggs"],
+      "available": true
+    },
+    {
+      "id": "chocolate-chip-cookie",
+      "name": "Chocolate Chip Cookie",
+      "category": "pastry",
+      "description": "Thick and chewy, loaded with chocolate chips.",
+      "price": 2.75,
+      "options": {},
+      "allergens": ["gluten", "dairy", "eggs"],
+      "available": true
+    },
+    {
+      "id": "avocado-toast",
+      "name": "Avocado Toast",
+      "category": "food",
+      "description": "Sourdough, smashed avocado, chili flakes, and a squeeze of lemon.",
+      "price": 7.00,
+      "options": {
+        "add-ons": ["fried egg", "feta"]
+      },
+      "allergens": ["gluten"],
+      "available": true
+    },
+    {
+      "id": "turkey-pesto-sandwich",
+      "name": "Turkey Pesto Sandwich",
+      "category": "food",
+      "description": "Roasted turkey, basil pesto, and provolone on ciabatta.",
+      "price": 8.50,
+      "options": {},
+      "allergens": ["gluten", "dairy", "nuts"],
+      "available": true
+    },
+    {
+      "id": "seasonal-fruit-cup",
+      "name": "Seasonal Fruit Cup",
+      "category": "food",
+      "description": "A rotating mix of fresh, locally sourced seasonal fruit.",
+      "price": 4.50,
+      "options": {},
+      "allergens": [],
+      "available": false
+    }
+  ]
+}

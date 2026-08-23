@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CafeBot &mdash; Staff Dashboard</title>
+  <link rel="stylesheet" href="staff.css">
+</head>
+<body>
+
+  <header class="staff-header">
+    <h1>Orders</h1>
+    <button type="button" id="refreshBtn">Refresh</button>
+  </header>
+
+  <main>
+    <table class="orders-table">
+      <thead>
+        <tr>
+          <th>Order</th>
+          <th>Items</th>
+          <th>Type</th>
+          <th>Customer</th>
+          <th>Total</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="ordersBody"></tbody>
+    </table>
+    <p id="emptyMessage" hidden>No orders yet.</p>
+  </main>
+
+  <script src="staff.js"></script>
+</body>
+</html>

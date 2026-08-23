@@ -1,0 +1,44 @@
+{
+  "promotions": [
+    {
+      "id": "happy-hour",
+      "name": "Afternoon Happy Hour",
+      "rule": "20% off all coffee category drinks",
+      "discountType": "percentage",
+      "discountValue": 20,
+      "eligibility": {
+        "categories": ["coffee"],
+        "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "timeWindow": { "start": "14:00", "end": "16:00" },
+        "minOrderTotal": 0
+      },
+      "active": true
+    },
+    {
+      "id": "pastry-pair",
+      "name": "Coffee + Pastry Pairing",
+      "rule": "$1.00 off any pastry when purchased with a coffee category drink",
+      "discountType": "fixed",
+      "discountValue": 1.00,
+      "eligibility": {
+        "categories": ["pastry"],
+        "requiresItemFromCategory": "coffee",
+        "minOrderTotal": 0
+      },
+      "active": true
+    },
+    {
+      "id": "loyalty-tenth-free",
+      "name": "Loyalty: Tenth Drink Free",
+      "rule": "100% off one coffee category drink after 9 previous qualifying purchases",
+      "discountType": "percentage",
+      "discountValue": 100,
+      "eligibility": {
+        "categories": ["coffee"],
+        "requiresLoyaltyPunches": 9,
+        "maxRedemptions": 1
+      },
+      "active": false
+    }
+  ]
+}
