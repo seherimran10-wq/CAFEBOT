@@ -19,6 +19,7 @@ const ORDERS_PATH = process.env.VERCEL
   ? path.join(os.tmpdir(), 'orders.json')
   : path.join(__dirname, '..', 'data', 'orders.json');
 const ORDER_STATUSES = ['NEW', 'PREPARING', 'READY', 'COMPLETED'];
+const MAX_TOOL_ITERATIONS = 8;
 
 // In-memory only — lost on restart. Revisit before production.
 const orderSessions = new Map();
@@ -695,7 +696,9 @@ app.post('/api/chat', async (req, res) => {
       messages,
     });
 
-    while (response.stop_reason === 'tool_use') {
+    let toolIterations = 0;
+    while (response.stop_reason === 'tool_use' && toolIterations < MAX_TOOL_ITERATIONS) {
+      toolIterations += 1;
       messages.push({ role: 'assistant', content: response.content });
 
       const toolResults = response.content
@@ -728,17 +731,20 @@ app.post('/api/chat', async (req, res) => {
       });
     }
 
-    const reply = response.content
-      .filter((block) => block.type === 'text')
-      .map((block) => block.text)
-      .join('');
+    const reply =
+      response.stop_reason === 'tool_use'
+        ? "Sorry, that's taking longer than expected to work out. Could you try rephrasing, or asking again in a moment?"
+        : response.content
+            .filter((block) => block.type === 'text')
+            .map((block) => block.text)
+            .join('');
 
     res.json({
       reply,
       conversationHistory: [...messages, { role: 'assistant', content: reply }],
     });
   } catch (error) {
-    console.error('Claude API error:', error.message);
+    console.error('Claude API error:', error.status || error.name, error.message);
     res.json({
       reply: "Sorry, I'm having trouble connecting right now. Please try again in a moment.",
       conversationHistory: history,
