@@ -741,7 +741,13 @@ app.post('/api/chat', async (req, res) => {
 
     res.json({
       reply,
-      conversationHistory: [...messages, { role: 'assistant', content: reply }],
+      // Only the plain user/assistant text turns go back to the client —
+      // `messages` also has the intermediate tool_use/tool_result blocks,
+      // and truncating that raw array client-side (see HISTORY_LIMIT in
+      // app.js) can cut a tool_result off from its matching tool_use, which
+      // the API then rejects outright. The order/cart state already lives
+      // server-side per session, so the model doesn't need this replayed.
+      conversationHistory: [...history, { role: 'user', content: message }, { role: 'assistant', content: reply }],
     });
   } catch (error) {
     console.error('Claude API error:', error.status || error.name, error.message);
