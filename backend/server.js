@@ -1,4 +1,5 @@
 const fs = require('fs');
+const os = require('os');
 const path = require('path');
 const crypto = require('crypto');
 require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
@@ -12,7 +13,11 @@ const CLAUDE_MODEL = 'claude-sonnet-5';
 const SESSION_COOKIE = 'cafebot_session_id';
 const TAX_RATE = Number(process.env.TAX_RATE) || 0.0825;
 const DELIVERY_FEE = Number(process.env.DELIVERY_FEE) || 3.0;
-const ORDERS_PATH = path.join(__dirname, '..', 'data', 'orders.json');
+// The repo's data/ directory is read-only on Vercel, so writes there fail
+// outright — fall back to the OS temp dir there, which is writable.
+const ORDERS_PATH = process.env.VERCEL
+  ? path.join(os.tmpdir(), 'orders.json')
+  : path.join(__dirname, '..', 'data', 'orders.json');
 const ORDER_STATUSES = ['NEW', 'PREPARING', 'READY', 'COMPLETED'];
 
 // In-memory only — lost on restart. Revisit before production.
@@ -566,7 +571,12 @@ function getOrderTotal(order) {
 // filesystems and do not guarantee that writes here survive between
 // invocations or deploys. Replace with a real database before production.
 function loadOrders() {
-  return JSON.parse(fs.readFileSync(ORDERS_PATH, 'utf8'));
+  try {
+    return JSON.parse(fs.readFileSync(ORDERS_PATH, 'utf8'));
+  } catch (err) {
+    if (err.code === 'ENOENT') return [];
+    throw err;
+  }
 }
 
 function saveOrders(orders) {
