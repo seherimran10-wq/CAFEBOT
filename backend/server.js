@@ -71,6 +71,15 @@ Never calculate, estimate, or state an order's subtotal, tax, delivery fee, or t
 
 Never tell a customer their order is placed, finalized, or submitted based on your own reading of what they said — that decision is never yours to make. After reading back the full order and total, ask one clear yes/no question (e.g. "Shall I place this order?"), then call finalizeOrder with the customer's next reply passed verbatim in customerReply. If it returns "confirmed", the order is saved — tell the customer and give them the orderId if useful. If it returns "ambiguous", their reply did not count as confirmation, even if it sounded positive — do not treat the order as final; ask again for an explicit yes or no. If it returns "incomplete", resolve whatever it says is missing, then ask for confirmation again before calling it. If the customer changes or corrects anything after you've asked for confirmation, update the order, get a fresh total, and ask for confirmation again from scratch.`;
 
+// The system prompt (plus the tool schema, which the API caches alongside
+// it) is identical on every /api/chat call — including the extra calls the
+// tool-use loop makes within a single customer turn, and across different
+// customers. Marking it cache_control lets Anthropic reuse it instead of
+// billing full price on every call.
+const SYSTEM_PROMPT_CACHED = [
+  { type: 'text', text: SYSTEM_PROMPT_WITH_MENU, cache_control: { type: 'ephemeral' } },
+];
+
 // Option categories where the customer must pick a value; the rest (flavors, add-ons) are optional extras.
 const OPTIONAL_OPTION_KEYS = ['flavors', 'add-ons'];
 
@@ -746,7 +755,7 @@ app.post('/api/chat', async (req, res) => {
     let response = await anthropic.messages.create({
       model: CLAUDE_MODEL,
       max_tokens: 1024,
-      system: SYSTEM_PROMPT_WITH_MENU,
+      system: SYSTEM_PROMPT_CACHED,
       tools: TOOLS,
       messages,
     });
@@ -780,7 +789,7 @@ app.post('/api/chat', async (req, res) => {
       response = await anthropic.messages.create({
         model: CLAUDE_MODEL,
         max_tokens: 1024,
-        system: SYSTEM_PROMPT_WITH_MENU,
+        system: SYSTEM_PROMPT_CACHED,
         tools: TOOLS,
         messages,
       });
@@ -854,5 +863,5 @@ app.patch('/api/staff/orders/:id/status', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`CafeBot server running at http://localhost:${PORT}`);
+  console.log(`Cafe Agent server running at http://localhost:${PORT}`);
 });
