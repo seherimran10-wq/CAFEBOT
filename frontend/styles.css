@@ -1,4 +1,4 @@
-/* CafeBot styles — neon/LED theme */
+/* Cafe Agent styles — neon/LED theme */
 
 :root {
   --color-bg: #08080f;
@@ -63,6 +63,40 @@ a:hover {
   max-width: var(--container-width);
   margin: 0 auto;
   padding: 0 1.5rem;
+}
+
+/* Demo banner */
+
+.demo-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding: 0.5rem 1rem;
+  background: #1a1505;
+  border-bottom: 1px solid #4a3a00;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.demo-banner-badge {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  background: #ffc800;
+  color: #08080f;
+  font-family: var(--font-display);
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+
+.demo-banner-text {
+  color: #ffdd66;
+  letter-spacing: 0.01em;
 }
 
 /* Header */

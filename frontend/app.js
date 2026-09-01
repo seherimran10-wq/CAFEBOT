@@ -1,4 +1,4 @@
-// CafeBot chat widget
+// Cafe Agent chat widget
 
 document.addEventListener('DOMContentLoaded', function () {
   var toggle = document.getElementById('chatToggle');
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function showTyping() {
-    typingBubble = addBubble('CafeBot is typing…', 'bot');
+    typingBubble = addBubble('Cafe Agent is typing…', 'bot');
   }
 
   function hideTyping() {

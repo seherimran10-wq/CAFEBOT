@@ -1,9 +1,11 @@
-# CafeBot
+# Cafe Agent
 
 ## Purpose
 
-CafeBot is a café web app: a customer-facing site/chatbot experience for a
-café (browsing menu, asking questions, placing orders, etc.). This file
+Cafe Agent is a café web app template: a customer-facing site/chatbot
+experience for a café (browsing menu, asking questions, placing orders,
+etc.). It's a demo project — for sale, not an actual café — so the
+customer-facing UI and chatbot persona should keep saying so. This file
 guides any AI assistant working in this repo.
 
 ## Architecture Overview

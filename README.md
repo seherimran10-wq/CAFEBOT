@@ -1,7 +1,8 @@
-# CafeBot
+# Cafe Agent
 
-A café web app: a customer-facing site with an order-taking chatbot, plus a
-minimal staff dashboard for tracking orders.
+**Demo project — for sale, not an actual café.** A café web app template: a
+customer-facing site with an order-taking chatbot, plus a minimal staff
+dashboard for tracking orders.
 
 ## Structure
 

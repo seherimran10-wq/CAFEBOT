@@ -1,4 +1,4 @@
-// CafeBot offers page
+// Cafe Agent offers page
 
 document.addEventListener('DOMContentLoaded', function () {
   var list = document.getElementById('offersList');
